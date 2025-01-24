@@ -78,7 +78,8 @@ let newBuddies = {};
 Object.assign(newBuddies, buddies);
 console.log(newBuddies); // {elephant: 'Слон', Symbol(Жучка): 'Жучка', Symbol(Бобик): 'Бобик', Symbol(Бобик): 'Бобик', Symbol(Шарик): 'Шарик'}
 
-
+buddies.cat = 'Барсик'; 
+console.log(buddies); // барсик появится в консоли при печати из 72 и 82 строки и не появиться в console.log(newBuddies) в 79 строке
 
 
 
