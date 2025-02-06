@@ -54,10 +54,54 @@ console.log(windowHeight1); // 1226
 const frame = frames[0]; // ссылка на фрейм по индексу
 
 const frameCount = frames.length;
-console.log(frameCount);
+console.log(frameCount); // 1
 
 const parentFrame = frame.parent;
-console.log(parentFrame);
+console.log(parentFrame); // Window
 
 const parentFrame1 = window.parent;
-console.log(parentFrame1);
+console.log(parentFrame1); // Window
+
+// Работа с globalThis
+
+const globalObject = globalThis; // Получает глобальный объект
+globalThis.newVariable = 'Hello World'; // Определяет новую глобальную переменную
+const globalVariable = globalThis.window === globalThis.self ? 'window' : 'worker'; // Получает доступ к глобальным переменным из разных сред исполнения
+
+var glob = 15;
+
+function increment(val) {
+    return val + 1;
+}
+
+console.log(window.glob); // 15
+console.log(window.increment);
+//ƒ increment(val) {
+//     return val + 1;
+// }
+
+console.log(alert === window.alert); // true
+
+// alert('Можно так');
+// window.alert('А можно и так');
+
+const local = 25;
+
+let localFunction = (val)=>{
+    return val+1;
+}
+console.log(local); // 25
+console.log(localFunction); 
+// (val)=>{
+//     return val+1;
+// }
+
+console.log(window.local); // undefined
+console.log(window.localFunction); // undefined
+
+
+// Объект функции 
+// хранит в себе методы и свойства, присущие для функций:
+// 📌 Свойство name, в котором содержится имя функции;
+// 📌 Свойство length, в котором хранится число параметров, которые ожидает функция.
+// Внутри функции доступен массив arguments с перечислением параметров функции
