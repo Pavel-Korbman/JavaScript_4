@@ -87,11 +87,11 @@ console.log(alert === window.alert); // true
 
 const local = 25;
 
-let localFunction = (val)=>{
-    return val+1;
+let localFunction = (val) => {
+    return val + 1;
 }
 console.log(local); // 25
-console.log(localFunction); 
+console.log(localFunction);
 // (val)=>{
 //     return val+1;
 // }
@@ -105,3 +105,33 @@ console.log(window.localFunction); // undefined
 // 📌 Свойство name, в котором содержится имя функции;
 // 📌 Свойство length, в котором хранится число параметров, которые ожидает функция.
 // Внутри функции доступен массив arguments с перечислением параметров функции
+
+function sayHello() {
+    console.log('Hello!');
+}
+
+console.log(sayHello.name); // sayHello
+console.log(window.name); // имя окна браузера, если оно задано или пустую строку
+
+console.log(frames[0].name); // имя фрейма, если оно задано или пустую строку
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+}
+
+const rect = new Rectangle(10, 5);
+
+console.log(rect.name); // undefined
+console.log(rect.constructor.name); // Rectangle
+
+// Особенности стрелочных функций
+
+// 📌 Стрелочные функции не имеют своего this
+// 📌 В стрелочных функциях отсутствует массив arguments
+// 📌 Для однострочных стрелочных функций без выражений в фигурных
+// скобках автоматически подставляется return для выражения
+
+
