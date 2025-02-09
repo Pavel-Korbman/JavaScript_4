@@ -32,7 +32,7 @@ getAccountInfo = (user) => {
             throw new Error('Нет такого пользователя');
         }
     } catch (error) {
-        console.error('Ошибка запроса', error.message);
+        console.error('Ошибка запроса: ', error.message);
     }
 }
 
