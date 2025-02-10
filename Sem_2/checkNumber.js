@@ -8,7 +8,7 @@ function checkNumber() {
     let number = document.querySelector('.number').value;
     let res =document.querySelector('.res');
     try {
-        if (!isNaN(number)) {
+        if (!isNaN(number) && number!=='') {
             res.textContent=`${number} - это число`;
         } else {
             throw new Error('Это не число');

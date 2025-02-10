@@ -16,7 +16,11 @@ class User {
 }
 
 class PremiumUser extends User {
-    premiumAccount = new Date().getFullYear() + 1;
+    premiumAccount = null;
+    setPremiumAccount(){
+        this.premiumAccount = new Date().getFullYear() + 1; 
+    }
+    
 
 }
 
@@ -38,6 +42,7 @@ getAccountInfo = (user) => {
 
 const user_1 = new RegularUser('Eva', 'Korbman');
 const user_2 = new PremiumUser('Pavel', 'Korbman');
+user_2.setPremiumAccount();
 const user_3 = new User('Lena', 'Korbman');
 
 getAccountInfo(user_1);
