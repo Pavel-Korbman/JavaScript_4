@@ -10,9 +10,11 @@
 
 
 function addNew(index) {
-    let value = document.querySelector('.input-' + index).value;
+
+    const value = document.querySelector('.input-' + index).value;
     const ul = document.querySelector('.ul-' + index);
     const errorString = document.querySelector('.error-' + index);
+
     try {
         if (value.length < 50 || value.length > 500) {
             throw new Error('Не правильная длинна отзыва');
@@ -77,6 +79,5 @@ function buildFeedbacks(elements) {
         addFeedback(index);
     }
 }
-
 
 buildFeedbacks(initialData);
