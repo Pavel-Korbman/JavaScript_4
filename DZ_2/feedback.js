@@ -9,24 +9,74 @@
 
 
 
-function addElement() {
-    let element = document.querySelector('.element').value;
-    let list =document.querySelector('.list');
-    let res =document.querySelector('.res-1');
+function addNew(index) {
+    let value = document.querySelector('.input-' + index).value;
+    const ul = document.querySelector('.ul-' + index);
+    const errorString = document.querySelector('.error-' + index);
     try {
-        if (element.length >=3 && element.length <=10 ) {       
-            const li = document.createElement('li');
-            li.textContent = element;
-            list.appendChild(li);
+        if (value.length < 50 || value.length > 500) {
+            throw new Error('Не правильная длинна отзыва');
         } else {
-            throw new Error('Не правильная длинна слова');
+            const li = document.createElement('li');
+            li.textContent = value;
+            ul.appendChild(li);
+            errorString.textContent = null;
+            document.querySelector('.input-' + index).value = '';
         }
 
     } catch (error) {
-        res.textContent=`Ошибка ввода: ${error.message}`;
+        errorString.textContent = `Ошибка ввода: ${error.message}`;
     }
-
 }
 
-const button1 = document.querySelector('.button-1');
-button1.addEventListener('click', () => addElement());
+function addFeedback(index) {
+    const button = document.querySelector('.button-' + index);
+    button.addEventListener('click', () => addNew(index));
+}
+
+function buildFeedbacks(elements) {
+
+    const products = document.querySelector('.products');
+
+    for (let index = 0; index < elements.length; index++) {
+
+        const product = document.createElement('div');
+        product.className = 'product';
+        products.appendChild(product);
+
+        const title = document.createElement('h2');
+        title.textContent = elements[index].product;
+        product.appendChild(title);
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'input-' + index;
+        product.appendChild(input);
+
+        const button = document.createElement('button');
+        button.className = 'button-' + index;
+        button.textContent = 'Добавить отзыв о ' + elements[index].product;
+        product.appendChild(button);
+
+        const error = document.createElement('p');
+        error.className = 'error-' + index;
+        error.textContent = ' '; //
+        product.appendChild(error);
+
+        const ul = document.createElement('ul');
+        ul.className = 'ul-' + index;
+        ul.textContent = 'Отзывы:'
+        product.appendChild(ul);
+
+        elements[index].reviews.forEach(e => {
+            const li = document.createElement('li');
+            li.textContent = e.text;
+            ul.appendChild(li);
+        });
+
+        addFeedback(index);
+    }
+}
+
+
+buildFeedbacks(initialData);
