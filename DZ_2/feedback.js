@@ -62,7 +62,7 @@ function buildFeedbacks(elements) {
 
         const error = document.createElement('p');
         error.className = 'error-' + index;
-        error.textContent = ' '; //
+        error.textContent = ' ';
         product.appendChild(error);
 
         const ul = document.createElement('ul');
