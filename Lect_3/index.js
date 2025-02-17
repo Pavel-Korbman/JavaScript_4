@@ -31,7 +31,7 @@
 // обработчики. Оба параметра не являются обязательными, но чаще всего then
 // используется с одним параметром onfulfilled
 
-// Задача:
+// Задача 1:
 // Напишите функцию generateRandomNumber(), которая возвращает Promise, 
 // выполняющийся через 1 сек и генерирует случайное число от 1 до 10. Если произошла ошибка при генерации числа - Promise должен быть отклонён с сообщением об ошибке.
 
@@ -56,4 +56,27 @@ generateRandomNumber()
     })
     .catch((error) => {
         console.log('Ошибка:', error);
+    });
+
+// Задача 2:
+// Напишите функцию fetchData(url) , которая принимает URL и возвращает Promise , выполняющий запрос данных по данному URL. Если запрос успешен Promise должен резолвить полученные данные. Если произошла ошибка запроса - Promise должен быть отклонён с сообщением об ошибке.
+
+let fetchData = (url) => {
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => resolve(data))
+            .catch((error) => reject('Ошибка загрузки данных'))
+    });
+
+}
+
+// https://api.github.com/users/1
+
+fetchData('https://api.github.com/users/1')
+    .then((data)=>{
+        console.log('Полученные данные: ', data);
+    })
+    .catch((error)=>{
+        console.log('Ошибка загрузки данных: ', error);
     });
