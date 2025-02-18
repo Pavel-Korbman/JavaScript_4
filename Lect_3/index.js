@@ -120,6 +120,36 @@ const calculateSumm = (a, b) => {
     });
 }
 
-calculateSumm(3, 4).then((res) => {
-    console.log('Сумма = ', res);
+calculateSumm(300, 4).then((res) => {
+    console.log('Сумма = ', res); // Сумма =  304
 })
+
+calculateSumm('some', 4).then((res) => {
+    console.log('Сумма = ', res); // Сумма =  some4
+})
+
+// Задача 5:
+// Напишите функцию divideNumbers(a, b) , которая принимает два числа и возвращает Promise. Promise должен выполнить деление первого числа на второе. Если второе число 0 - Promise должен быть отклонён с сообщением о невозможности делить на ноль.
+
+const divideNumbers = (a, b) => {
+    return new Promise((resolve, reject) => {
+        (b !== 0)? resolve(a / b) : reject('Не возможно делить на 0');
+        }
+    );
+}
+
+divideNumbers(400, 3)
+    .then((result) => {
+        console.log('Частное = ', result); // Частное =  133.33333333333334
+    })
+    .catch((error) => {
+        console.log('Ошибка: ', error);
+    })
+
+    divideNumbers(400, 0)
+    .then((result)=>{
+        console.log('Частное = ', result); // Ошибка:  Не возможно делить на 0
+    })
+    .catch((error)=>{
+        console.log('Ошибка: ', error);
+    })
