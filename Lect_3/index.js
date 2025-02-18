@@ -133,8 +133,8 @@ calculateSumm('some', 4).then((res) => {
 
 const divideNumbers = (a, b) => {
     return new Promise((resolve, reject) => {
-        (b !== 0)? resolve(a / b) : reject('Не возможно делить на 0');
-        }
+        (b !== 0) ? resolve(a / b) : reject('Не возможно делить на 0');
+    }
     );
 }
 
@@ -146,9 +146,58 @@ divideNumbers(400, 3)
         console.log('Ошибка: ', error);
     })
 
-    divideNumbers(400, 0)
-    .then((result)=>{
+divideNumbers(400, 0)
+    .then((result) => {
         console.log('Частное = ', result); // Ошибка:  Не возможно делить на 0
+    })
+    .catch((error) => {
+        console.log('Ошибка: ', error);
+    })
+
+// ЦЕПОЧКИ ПРОМИСОВ:
+
+new Promise(function (resolve) {
+    setTimeout(() => resolve(1), 1000);
+}).then(function (result) {
+    console.log(result);
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(result * 2), 1000);
+    });
+}).then(function (result) {
+    console.log(result);
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(result * 2), 1000);
+    });
+}).then(function (result) {
+    console.log(result);
+})
+// Здесь мы три раза с интервалом в секунду получим три ответа. Первый промис
+// через таймаут в 1 секунду выдаст результат 1 с помощью функции resolve(1), второй
+// промис умножит его на 2, третий промис полученный результат из второго промиса
+// умножит на 2.
+// 1
+// 2
+// 4
+
+
+// Finally
+
+let processData = (data) => {
+
+};
+
+let performOperation = (data) => {
+    return new Promise((resolve, reject) => {
+        let result = processData(data);
+        (result) ? resolve(result) : reject('Ошибка операции');
+    }).finally(() => {
+        console.log('Операция завершена');
+    });
+}
+
+performOperation('example')
+    .then((result)=>{
+        console.log('Результат операции: ', result);
     })
     .catch((error)=>{
         console.log('Ошибка: ', error);
