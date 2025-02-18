@@ -74,13 +74,52 @@ let fetchData = (url) => {
 // https://api.github.com/users/1
 
 fetchData('https://api.github.com/users/1')
-    .then((data)=>{
+    .then((data) => {
         console.log('Полученные данные: ', data);
     })
-    .catch((error)=>{
+    .catch((error) => {
         console.log('Ошибка загрузки данных: ', error);
     });
 
-    // Задача 3:
+// Задача 3:
 // Напишите функцию checkFileExists(file) , которая принимает имя файла и возвращает Promise, выполняющийся через 2 сек. Promise должен резолвиться если файл существует и отклониться если файла нет.
 
+let checkIfFileExists = (file) => {
+
+};
+
+let checkFileExists = (file) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const fileExist = checkIfFileExists(file);
+            if (fileExist) {
+                resolve('Файл существует.');
+            } else {
+                reject('файл не найден.');
+            }
+        }, 2000);
+    });
+}
+
+checkFileExists('file_1.txt')
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.log('Ошибка чтения файла:', error);
+    })
+
+// Использование .then без .catch
+
+// Задача 4:
+// Напишите функцию calculateSumm(a, b) , которая принимает два числа и возвращает Promise. Promise должен быть выполнен суммой двух чисел.
+
+const calculateSumm = (a, b) => {
+    return new Promise((resolve, reject) => {
+        resolve(a + b);
+    });
+}
+
+calculateSumm(3, 4).then((res) => {
+    console.log('Сумма = ', res);
+})
