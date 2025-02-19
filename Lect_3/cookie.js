@@ -18,3 +18,4 @@ const setCookie = (name, value, days) => {
 
 setCookie('username', 'Pavel Korbman', 7);
 setCookie('userinfo', 'Mister', 5);
+setCookie('userinfo2', 'Mister2', 6);
