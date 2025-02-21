@@ -19,3 +19,30 @@ const setCookie = (name, value, days) => {
 setCookie('username', 'Pavel Korbman', 7);
 setCookie('userinfo', 'Mister', 5);
 setCookie('userinfo2', 'Mister2', 6);
+
+// Напишем функцию getCookie(name), 
+// которая возвращает значения cookie с указанным именем: 
+
+const getCookie = (name) => {
+    let cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        let [cookieName, cookieValue] = cookie.trim().split('=');
+        if (cookieName === name) {
+            return decodeURIComponent(cookieValue);
+        }
+    }
+    return null;
+};
+
+let username = getCookie('username');
+console.log('Значение cookie "username": ', username);
+
+// Напишем функцию deleteCookie(name), 
+// которая удаляет cookie с указанным именем: 
+
+const deleteCookie = (name) => {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+};
+
+// deleteCookie('userinfo2');
+deleteCookie('username');
