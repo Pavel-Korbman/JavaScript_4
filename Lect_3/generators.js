@@ -23,7 +23,7 @@
 
 function* numberGenerator() {
     let number = 1;
-    while (true) {
+    while (true) { // до бесконечности
         yield number;
         number++;
     }
