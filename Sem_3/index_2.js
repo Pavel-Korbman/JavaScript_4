@@ -31,6 +31,7 @@ getButton.addEventListener('click', () => {
 })
 
 delButton.addEventListener('click', () => {
-    localStorage.clear(); 
+    localStorage.removeItem('content');
+    content.textContent ='Текст удалён' 
 })
 
