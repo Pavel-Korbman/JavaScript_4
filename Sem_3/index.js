@@ -26,8 +26,8 @@ const news = [
 const fetchNews = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const randomNumber = Math.floor(Math.random() * 10) + 1;            
-            if (randomNumber !== 5) {
+            // const randomNumber = Math.floor(Math.random() * 10) + 1;            
+            if (Math.random() > 0.1) {
                 resolve(news);
             } else {
                 reject('Ошибка загрузки');
