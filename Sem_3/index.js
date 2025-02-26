@@ -58,3 +58,4 @@ button.addEventListener('click', () => {
             newsList.appendChild(err);
         });
 })
+
