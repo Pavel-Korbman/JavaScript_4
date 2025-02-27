@@ -5,7 +5,7 @@ const productFeedbacks = (el) => {
         feedbacks.forEach(element => {
             if (element !== '') {
                 const feedback = document.createElement('p');
-                feedback.textContent = element;
+                feedback.textContent = element; // удалить символ_
                 el.appendChild(feedback);
                 const delButton = document.createElement('button');
                 delButton.textContent = 'Удалить';
