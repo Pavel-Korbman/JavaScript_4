@@ -1,6 +1,3 @@
-
-
-
 const productFeedbacks = (el) => {
     el.addEventListener('click', () => {
         const good = el.textContent;
@@ -17,7 +14,10 @@ const productFeedbacks = (el) => {
                     feedbacks.splice(feedbacks.indexOf(element), 1);
                     localStorage.setItem(good, feedbacks);
                     feedback.remove();
-                    if (feedbacks.length === 0) location.reload();
+                    if (feedbacks.length === 0) {
+                        localStorage.removeItem(good)
+                        location.reload();
+                    }
                 })
             }
 
@@ -38,4 +38,3 @@ for (let i = 0; i < localStorage.length; i++) {
 }
 
 (goodsList.children.length===0)? message.textContent='Пока нет отзывов': message.textContent='';
-// localStorage.clear();

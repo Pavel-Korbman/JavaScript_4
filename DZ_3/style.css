@@ -1,7 +1,32 @@
+.center {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: lightgray;
+    margin-bottom: 20px;
+}
+
 button {
     margin-left: 10px;
 }
 
+.margin-none{
+    margin: 0;
+}
+
 p {
     font-size: 14px;
+}
+
+.message {
+    color: crimson;
 }
