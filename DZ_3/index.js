@@ -29,7 +29,7 @@ const goodsList = document.querySelector('.goodsList');
 const message = document.querySelector('.message');
 
 for (let i = 0; i < localStorage.length; i++) {
-    if (localStorage.getItem(localStorage.key(i))) {
+    if (localStorage.getItem(localStorage.key(i))) {       
         const product = document.createElement('h3');
         product.textContent = localStorage.key(i);
         goodsList.appendChild(product);
