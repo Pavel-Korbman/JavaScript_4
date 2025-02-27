@@ -19,7 +19,7 @@ button {
     margin-left: 10px;
 }
 
-.margin-none{
+.margin-none {
     margin: 0;
 }
 
@@ -29,4 +29,12 @@ p {
 
 .message {
     color: crimson;
+}
+
+.goodfield {
+    width: 20%;
+}
+
+.feedbackfield {
+    width: 20%;
 }
